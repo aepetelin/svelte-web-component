@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test web component</title>
+</head>
+<body>
+
+<my-counter id="counter" title="My counter"></my-counter>
+
+<my-clock></my-clock>
+
+<h1>value is: <span id="val1"></span></h1>
+
+<script type="module" src="/dist/my-components.umd.js"></script>
+
+<script>
+  const button = document.getElementById('counter')
+  button.addEventListener('message', handler)
+
+  function handler ({detail}) {
+    document.getElementById('val1').innerText = detail.count
+    console.log('[DEBUG] event', detail.count)
+  }
+</script>
+</body>
+</html>
